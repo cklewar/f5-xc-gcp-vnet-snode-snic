@@ -15,11 +15,6 @@ terraform {
       version = ">= 0.11.16"
     }
 
-    aws = {
-      source  = "hashicorp/aws"
-      version = ">= 4.33.0"
-    }
-
     local = ">= 2.2.3"
     null  = ">= 3.1.1"
   }
