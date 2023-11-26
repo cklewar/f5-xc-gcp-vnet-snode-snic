@@ -55,13 +55,14 @@ variable "ssh_public_key_file" {
 }
 
 variable "gcp_application_credentials" {
-  type    = string
+  type = string
 }
 
 provider "volterra" {
   api_p12_file = var.f5xc_api_p12_file
   url          = var.f5xc_api_url
   alias        = "default"
+  timeout      = "30s"
 }
 
 provider "google" {
@@ -92,7 +93,7 @@ module "gcp_single_node_single_nic_new_network_new_subnet" {
   f5xc_gcp_default_blocked_services = true
   ssh_public_key                    = file(var.ssh_public_key_file)
   providers                         = {
-    google = google.default
+    google   = google.default
     volterra = volterra.default
   }
 }
